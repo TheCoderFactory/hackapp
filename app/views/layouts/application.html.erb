@@ -60,7 +60,7 @@
 <% if @hackathons %>
 <script>
 var handler = Gmaps.build('Google');
-handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
+handler.buildMap({ provider: { zoom:  5}, internal: {id: 'multi_markers'}}, function(){
   var markers = handler.addMarkers([
     <% @hackathons.each do |hackathon| %>
     { lat: <%= hackathon.latitude %>, lng: <%= hackathon.longitude %>, "infowindow": "<%= hackathon_details(hackathon) %>"}<% if(hackathon != @hackathons.last) %>,<% end %>
@@ -69,6 +69,8 @@ handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });
+
+
 </script>
 <% end %>
 <% if current_page?('/hackathons/' + params[:id].to_s) %>
@@ -89,15 +91,16 @@ handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
       '<p><strong>Date: </strong><%= @hackathon.start_date.strftime("%B %Y") %></p>'+
       '</div>';
 
-  var infowindow = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 200
-  }); 
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 300
+      }); 
+
       var marker = new google.maps.Marker({
           position: myLatlng,
           map: map,
           animation: google.maps.Animation.DROP,
-          title:"Hello World!"
+          title:"<%= @hackathon.name %>"
       });
 
       google.maps.event.addListener(marker, 'click', function() {
