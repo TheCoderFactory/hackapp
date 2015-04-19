@@ -153,6 +153,7 @@ GEM
     passenger (5.0.6)
       rack
       rake (>= 0.8.1)
+    pg (0.18.1)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -275,6 +276,7 @@ DEPENDENCIES
   momentjs-rails (~> 2.9)!
   newrelic_rpm
   passenger
+  pg
   quiet_assets
   rails (= 4.2.1)
   rails_12factor

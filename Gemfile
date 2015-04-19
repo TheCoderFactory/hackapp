@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
@@ -68,9 +68,11 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'passenger'
+  gem 'pg'
 end
