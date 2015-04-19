@@ -1,0 +1,80 @@
+ 
+<div class="row"><div class="col-md-10 col-md-offset-1">
+<h1>Admin</h1>
+<div class="well">
+	<h1>Future hackathons <span class="pull-right"><%= link_to 'New Hackathon', new_hackathon_path, class: 'btn btn-success' %></span></h1>
+
+	<table class="table">
+	    <tr>
+	      <th>Name</th>
+	      <th>Organisation</th>
+	      <th>Country</th>
+	      <th>Start Date</th>
+	      
+	        <th colspan="3"></th>
+	    </tr>
+
+	  <%= content_tag_for(:tr, Hackathon.all) do |hackathon| %>
+	    <td><%= hackathon.name %></td>
+	    <td><%= hackathon.organisation %></td>
+	    <td><%= hackathon.country %></td>
+	    <td><%= hackathon.start_date %></td>
+	      <td><%= link_to 'Show', hackathon %></td>
+	    <td><%= link_to 'Edit', edit_hackathon_path(hackathon), class: 'btn btn-edit' %></td>
+	    <td><%= link_to 'Delete', hackathon, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+	  <% end %>
+	</table>
+
+
+
+</div>
+
+<div class="well">
+<h1>Enquiries</h1>
+
+<table class="table">
+    <tr>
+      <th>First name</th>
+      <th>Email</th>
+      <th>Phone</th>
+        <th colspan="2"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @enquiries) do |enquiry| %>
+    <td><%= link_to enquiry.first_name, enquiry %></td>
+    <td><%= enquiry.email %></td>
+    <td><%= enquiry.phone %></td>
+    <td><%= link_to 'Edit', edit_enquiry_path(enquiry), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', enquiry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+</div>
+
+<div class="well">
+	<h1>Past hackathons</h1>
+
+	<table class="table">
+	    <tr>
+	      <th>Name</th>
+	      <th>Organisation</th>
+	      <th>Country</th>
+	      <th>Start Date</th>
+	      
+	        <th colspan="3"></th>
+	    </tr>
+
+	  <%= content_tag_for(:tr, @past_hackathons) do |hackathon| %>
+	    <td><%= hackathon.name %></td>
+	    <td><%= hackathon.organisation %></td>
+	    <td><%= hackathon.start_date %></td>
+	    <td><%= hackathon.country %></td>
+	      <td><%= link_to 'Show', hackathon %></td>
+	    <td><%= link_to 'Edit', edit_hackathon_path(hackathon), class: 'btn btn-edit' %></td>
+	    <td><%= link_to 'Delete', hackathon, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+	  <% end %>
+	</table>
+
+</div>
+</div></div>

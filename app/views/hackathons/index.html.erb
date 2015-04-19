@@ -1,0 +1,27 @@
+<h1>Listing hackathons</h1>
+
+<table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Organisation</th>
+      <th>Country</th>
+      <th>Start Date</th>
+      
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @hackathons) do |hackathon| %>
+    <td><%= hackathon.name %></td>
+    <td><%= hackathon.organisation %></td>
+    <td><%= hackathon.start_date %></td>
+    <td><%= hackathon.country %></td>
+      <td><%= link_to 'Show', hackathon %></td>
+    <td><%= link_to 'Edit', edit_hackathon_path(hackathon), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', hackathon, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Hackathon', new_hackathon_path, class: 'btn btn-success' %>
+</div>

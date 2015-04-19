@@ -6,6 +6,7 @@ gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -46,6 +47,7 @@ end
 
 gem 'devise'
 gem 'simple_form'
+gem 'iso_country_codes'
 gem 'country_select'
 gem 'cancancan'
 gem 'rolify'
@@ -57,6 +59,12 @@ gem 'sitemap_generator'
 gem 'whenever', require: false
 gem 'sucker_punch', '~> 1.0'
 gem 'newrelic_rpm'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'jquery-turbolinks'
+gem 'acts-as-taggable-on', '~> 3.4'
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

@@ -1,0 +1,23 @@
+<h1>Enquiries</h1>
+
+<table class="table">
+    <tr>
+      <th>First name</th>
+      <th>Email</th>
+      <th>Phone</th>
+        <th colspan="2"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @enquiries) do |enquiry| %>
+    <td><%= link_to enquiry.first_name, enquiry %></td>
+    <td><%= enquiry.email %></td>
+    <td><%= enquiry.phone %></td>
+    <td><%= link_to 'Edit', edit_enquiry_path(enquiry), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', enquiry, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Enquiry', new_enquiry_path, class: 'btn btn-success' %>
+</div>

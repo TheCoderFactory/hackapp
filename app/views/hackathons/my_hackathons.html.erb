@@ -1,0 +1,48 @@
+<%= content_for :title, "My hackathons @ We Love Hackathons" %>
+<%= content_for :description, "This is the list of the hackathons you have listed." %>
+<div class="col-md-3">
+  <div class="well">
+    <h2>Upcoming <span class="label"><%= @my_hackathons.count %></span></h2>
+    <h2>Archived <span class="label"><%= @my_archived_hackathons.count %></span></h2>
+    <hr>
+    <%= link_to "Add new hackathon", new_hackathon_path, class: 'btn btn-primary btn-block' %>
+    <%= link_to "Import hackathons", import_path, class: 'btn btn-primary btn-block' %>
+  </div>
+</div>
+<div class="col-md-7">
+
+  <% if @my_hackathons.count > 0 %>
+    
+  	<% @my_hackathons.each do |hackathon| %>
+      <div class="well">
+        <h2><%= hackathon.name %> <span class="pull-right"><%= link_to "View", hackathon_path(hackathon), class: 'btn btn-primary btn-sm' %> <%= link_to "Edit", edit_hackathon_path(hackathon), class: 'btn btn-warning btn-sm' %></span></h2>
+        <h4><%= hackathon.city %>, <%= hackathon.country %>: <%= hackathon.start_date.strftime('%B %Y') %></h4>
+
+        
+      </div>
+    <% end %>
+
+  <% else %>
+   	<div class="well">
+     <h2>Upcoming</h2>
+   		<h3>You don't have any upcoming hackathons listed at the moment.</h3>
+    </div>
+  <% end %>
+  <% if @my_archived_hackathons.count > 0 %>
+    <h2>Archived</h2>
+    <% @my_archived_hackathons.each do |hackathon| %>
+      <div class="well">
+        <h2><%= hackathon.name %> <span class="pull-right"><%= link_to "View", hackathon_path(hackathon), class: 'btn btn-primary btn-sm' %> <%= link_to "Edit", edit_hackathon_path(hackathon), class: 'btn btn-warning btn-sm' %></span></h2>
+        <h4><%= hackathon.city %>, <%= hackathon.country %>: <%= hackathon.start_date.strftime('%B %Y') %></h4>
+
+        
+      </div>
+    <% end %>
+
+  <% else %>
+  <h2>Archived</h2>
+    <div class="well">
+      <h3>You don't have any archived hackathons at the moment.</h3>
+    </div>
+  <% end %>
+</div>

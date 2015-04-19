@@ -1,0 +1,33 @@
+<%= simple_form_for @new_subscriber, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+
+  
+    <%= f.input :first_name %>
+    <%= f.input :email %>
+    <%= f.input :city %>
+    <%= f.input :country %>
+    <!-- <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <div class="checkbox">
+          <input value="0" type="hidden" name="subscriber[accept_terms]" />
+          <label class="" for="subscriber_accept_terms">
+            <input class="" type="checkbox" value="1" name="subscriber[accept_terms]" id="subscriber_accept_terms" />
+            <span class="checkbox-material"><span class="check"></span></span> Accept terms (We'll never share your details.)
+          </label>
+        </div>
+      </div>
+    </div> -->
+
+   <div class="row">
+      <div class="col-sm-offset-3 col-sm-9">
+        <%= f.submit "Get updates", class: 'btn btn-primary' %>  We'll never share your details.
+      </div>
+    </div>
+<% end %>

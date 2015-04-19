@@ -1,14 +1,22 @@
 Rails.application.routes.draw do
+  get 'admin', to: 'admin#index'
+
+  resources :enquiries
+  resources :subscribers
+  resources :hackathons
+  get 'my_hackathons', to: 'hackathons#my_hackathons'
+  get 'import', to: 'hackathons#import'
+  post 'import_hackathons', to: 'hackathons#import_hackathons'
+  get 'search_hackathon', to: 'hackathons#search'
   get 'admin', to: 'pages#admin'
   get 'contact', to: 'pages#contact'
   root 'pages#home'
-  get 'pages/home'
 
-  get 'pages/admin'
-
-  get 'pages/contact'
-
+  get ':country_name', to: 'pages#home'
   devise_for :users
+  devise_scope :user do
+    get 'users/sign_out' => "devise/sessions#destroy"
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

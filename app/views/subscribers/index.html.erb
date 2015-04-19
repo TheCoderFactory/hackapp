@@ -1,0 +1,26 @@
+<h1>Listing subscribers</h1>
+
+<table class="table">
+    <tr>
+      <th><%=  attribute.name.capitalize  %></th>
+      <th><%=  attribute.name.capitalize  %></th>
+      <th><%=  attribute.name.capitalize  %></th>
+      <th><%=  attribute.name.capitalize  %></th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @subscribers) do |subscriber| %>
+    <td><%= subscriber.first_name %></td>
+    <td><%= subscriber.email %></td>
+    <td><%= subscriber.city %></td>
+    <td><%= subscriber.country %></td>
+      <td><%= link_to 'Show', subscriber %></td>
+    <td><%= link_to 'Edit', edit_subscriber_path(subscriber), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', subscriber, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Subscriber', new_subscriber_path, class: 'btn btn-success' %>
+</div>

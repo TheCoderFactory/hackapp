@@ -1,0 +1,39 @@
+<%= content_for :title, "Import your hackathons" %>
+<%= content_for :description, "The fastest way to list your hackathons on the We Love Hackathons website." %>
+
+<div class="col-md-7 col-md-offset-2">
+	<div class="well">
+		<h1>Import hackathons</h1>
+		<p class="lead">Import multiple hackathons with ease.</p>
+		<p><strong>Instructions</strong></p>
+		<ol>
+			<li>Download this blank CSV file: <%= link_to 'import_hackathons.csv', root_url + 'import_hackathons.csv' %></li>
+			<li>Open the file with Microsoft Word or Mac Numbers (or similar)</li>
+			<li>Enter the details for each Hackathon</li>
+			<li>NOTE These fields are required:
+				<ul>
+					<li>name</li>
+					<li>description</li>
+					<li>city</li>
+					<li>website (begin each website address with <strong>http://</strong>)</li>
+					<li>start_date (format: <strong>2015-06-15 16:00</strong>)</li>
+					<li>end_date (format: <strong>2015-06-15 16:00</strong>)</li>
+					<li>street (full street address)</li>
+					<li>suburb (or city)</li>
+					<li>state (or province)</li>
+					<li>postcode (or zip)</li>
+					<li>country (enter two letter country code [<a href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" target="_blank">find country codes here</a>])</li>
+				</ul>
+			</li>
+			<li>Other fields are optional</li>
+			<li>Save file (or export) as .csv </li>
+			<li>Upload file below</li>
+		</ol>
+
+		<%= form_tag import_hackathons_path, multipart: true do %>
+	    <%= file_field_tag :file %>
+	    <%= submit_tag "Import hackathons", class: 'btn btn-primary btn-lg' %>
+	  <% end %>
+
+	</div>
+</div>

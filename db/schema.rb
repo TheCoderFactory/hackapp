@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418015647) do
+ActiveRecord::Schema.define(version: 20150419111056) do
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -26,6 +35,35 @@ ActiveRecord::Schema.define(version: 20150418015647) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "hackathons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "organisation"
+    t.string   "website"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "location_name"
+    t.string   "street"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "postcode"
+    t.string   "country"
+    t.integer  "total_prize_value"
+    t.text     "description"
+    t.string   "logo"
+    t.string   "registration_link"
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "city"
+    t.string   "status"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "slug"
+  end
+
+  add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", unique: true
+  add_index "hackathons", ["user_id"], name: "index_hackathons_on_user_id"
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -36,6 +74,36 @@ ActiveRecord::Schema.define(version: 20150418015647) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "subscribers", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "email"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "accept_terms"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

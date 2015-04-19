@@ -1,0 +1,46 @@
+<%= simple_form_for @hackathon, html: { class: 'form-horizontal' },
+  wrapper: :horizontal_form,
+  wrapper_mappings: {
+    check_boxes: :horizontal_radio_and_checkboxes,
+    radio_buttons: :horizontal_radio_and_checkboxes,
+    file: :horizontal_file_input,
+    boolean: :horizontal_boolean
+  } do |f| %>
+  <%= f.error_notification %>
+  <div class="well">
+      <legend>1. General information</legend>
+      <%= f.input :name, label: "Hackathon name" %>
+   <%= f.input :organisation, label: "Organisation name" %>
+    <%= f.input :website, label: "Hackathon website", placeholder: "eg. https://hackathon.com/sydney" %>
+    
+      
+        <%= f.input :description, input_html: { rows: 3 } %>
+        <%= f.input :total_prize_value, label: 'Total prize value', hint: "Value in USD to the nearest dollar. eg 10000" %>
+
+        <%= f.input :logo, as: :file %>
+        <%= f.input :registration_link, placeholder: "eg. https://hackathon.eventrbite.com" %>
+        <%= f.input :tag_list, hint: 'eg. health, travel, virtual hackathon, hack for good etc' %>
+      </div>
+      <div class="well">
+    <legend>2. Location</legend>
+
+    <%= f.input :location_name, label: 'Venue/Location name', placeholder: 'eg. Hackathon HQ' %>
+    <%= f.input :city, placeholder: 'eg. Sydney' %>
+    <%= f.input :street, label: 'Street address' %>
+    <%= f.input :suburb, label: 'Suburb' %>
+    <%= f.input :state, label: 'State/Province' %>
+    <%= f.input :postcode, label: 'Postcode/Zip' %>
+    <%= f.input :country %>
+    </div>
+    <div class="well">
+    <legend>3. Dates & Times</legend>
+    <%= f.input :start_date, as: :datetime_picker, label: "Start Time & Date" %>
+    <%= f.input :end_date, as: :datetime_picker, label: "Finish Time & Date" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Submit hackathon for approval", class: 'btn btn-warning btn-lg' %> 
+    <%= link_to 'Cancel', root_path, class: 'btn btn-default btn-lg' %>
+  </div>
+<% end %>
+</div>
