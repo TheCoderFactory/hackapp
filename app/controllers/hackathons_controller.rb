@@ -35,7 +35,7 @@ class HackathonsController < ApplicationController
   # GET /hackathons/1
   # GET /hackathons/1.json
   def show
-    @nearby_hackathons = Hackathon.near([@hackathon.latitude, @hackathon.longitude], 50)
+    @nearby_hackathons = Hackathon.approved.near([@hackathon.latitude, @hackathon.longitude], 50)
   end
 
   # GET /hackathons/new
@@ -45,6 +45,9 @@ class HackathonsController < ApplicationController
 
   # GET /hackathons/1/edit
   def edit
+    unless current_user == @hackathon.user or current_user.has_role? :admin
+      redirect_to hackathon_path(@hackathon)
+    end
   end
 
   # POST /hackathons
