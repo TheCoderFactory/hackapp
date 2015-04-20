@@ -33,14 +33,13 @@
     <%= f.input :country %>
     </div>
     <div class="well">
-    <legend>3. Dates & Times</legend>
-    <%= f.input :start_date, as: :datetime_picker, label: "Start Time & Date" %>
-    <%= f.input :end_date, as: :datetime_picker, label: "Finish Time & Date" %>
-  </div>
+      <legend>3. Dates & Times</legend>
+      <%= f.input :start_date, as: :datetime_picker, label: "Start Time & Date" %>
+      <%= f.input :end_date, as: :datetime_picker, label: "Finish Time & Date" %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.submit "Submit hackathon for approval", class: 'btn btn-warning btn-lg' %> 
-    <%= link_to 'Cancel', root_path, class: 'btn btn-default btn-lg' %>
-  </div>
+    <div class="well">
+      <%= f.submit "Submit hackathon for approval", class: 'btn btn-warning btn-lg' %> 
+      <%= link_to 'Cancel', root_path, class: 'btn btn-default btn-lg' %>
+    </div>
 <% end %>
-</div>

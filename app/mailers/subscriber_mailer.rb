@@ -1,24 +1,11 @@
 class SubscriberMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.subscriber_mailer.response.subject
-  #
-  def response
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  default from: "We Love Hackathons <info@welovehackathons.com>"
+  def response(subscriber_id)
+    @subscriber = Subscriber.find(subscriber_id)
+    mail(to: 'pete@thecoderfactory.com', subject: 'New hackathon subscriber')
   end
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.subscriber_mailer.received.subject
-  #
-  def received
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def received(subscriber_id)
+    @subscriber = Subscriber.find(subscriber_id)
+    mail(to: @subscriber.email, subject: 'Thanks ' + @subscriber.first_name + ', we love you too!')
   end
 end

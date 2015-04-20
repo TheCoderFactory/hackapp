@@ -56,7 +56,6 @@ gem 'invisible_captcha'
 gem 'carrierwave'
 gem 'cloudinary'
 gem 'sitemap_generator'
-gem 'whenever', require: false
 gem 'sucker_punch', '~> 1.0'
 gem 'newrelic_rpm'
 gem 'geocoder'
@@ -65,12 +64,12 @@ gem 'jquery-turbolinks'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'will_paginate'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
   gem 'sqlite3'
 end
-
 group :production do
   gem 'rails_12factor'
   gem 'passenger'
