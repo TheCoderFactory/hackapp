@@ -27,7 +27,11 @@
 
    <div class="row">
       <div class="col-sm-offset-3 col-sm-9">
-        <%= f.submit "Get updates", class: 'btn btn-primary' %>  We'll never share your details.
+        <%= f.submit "Get updates", class: 'btn btn-primary' %>
+        
+        <p class="text-muted">
+          We'll never share your details. <a href="/privacy" target="_blank" title="We Love Hackathons' Privacy Policy">We <i class="fa fa-heart"></i> Privacy</a>
+        </p>
       </div>
     </div>
 <% end %>
