@@ -32,7 +32,7 @@
     <p><strong>Website:</strong> <%= link_to website_link_text(@hackathon.website), @hackathon.website, title: @hackathon.name, target: '_blank' %></p>
     <p>
       <strong>Total prize value:</strong>
-      <%= @hackathon.total_prize_value %>
+      <%= currency_code(@hackathon) + ' ' + @hackathon.total_prize_value.to_s %>
     </p>
     <p>
       <strong>Tags:</strong>

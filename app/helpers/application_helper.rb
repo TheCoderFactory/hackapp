@@ -17,6 +17,10 @@ module ApplicationHelper
 			html = '<small><span class="label label-default">APPROVED</span></small>'.html_safe
 		end
 	end
+
+	def currency_code(hackathon)
+		html = IsoCountryCodes.find(hackathon.country).currency
+	end
 end
 
 
