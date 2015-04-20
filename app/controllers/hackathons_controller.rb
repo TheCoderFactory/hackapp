@@ -9,6 +9,8 @@ class HackathonsController < ApplicationController
     redirect_to :back
   end
 
+  
+
   def my_hackathons
     @my_hackathons = Hackathon.where(user_id: current_user.id).future_hackathons
     @my_archived_hackathons = Hackathon.where(user_id: current_user.id).past_hackathons
@@ -83,10 +85,14 @@ class HackathonsController < ApplicationController
   # DELETE /hackathons/1
   # DELETE /hackathons/1.json
   def destroy
-    @hackathon.destroy
-    respond_to do |format|
-      format.html { redirect_to hackathons_url, notice: 'Hackathon was successfully destroyed.' }
-      format.json { head :no_content }
+    unless current_user.has_role? :admin
+      @hackathon.destroy
+      respond_to do |format|
+        format.html { redirect_to hackathons_url, notice: 'Hackathon was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to hackathon_path(@hackathon)
     end
   end
 

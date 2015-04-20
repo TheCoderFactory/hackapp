@@ -7,13 +7,20 @@
 				<div class="well">
 					  <a href="<%= hackathon_path(hackathon) %>">
 					    <h4><%= hackathon.name %></h4>
+
 					  </a>
-					
-				    <p>
-				    	<strong>City: </strong><%= hackathon.city %><br>
-				    	<strong>Starts: </strong><%= hackathon.start_date.strftime('%d %B %Y') %>
-				    </p>
-				  </div>
+					<div class="row">
+						<div class="col-md-6">
+					    <p>
+					    	<strong>City: </strong><%= hackathon.city %><br>
+					    	<strong>Starts: </strong><%= hackathon.start_date.strftime('%d %B %Y') %>
+					    </p>
+					  </div>
+					  <div class="col-md-6">
+					  	<%= cl_image_tag(hackathon.logo, width: '100px', class: 'list-logo') if hackathon.logo %>
+					  </div>
+					</div>
+				</div>
 			<% end %>
 		<div class="well">
 			<%= link_to "Add your hackathon", new_hackathon_path, class: 'btn btn-primary btn-block' %>
