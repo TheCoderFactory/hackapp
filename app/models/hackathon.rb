@@ -73,6 +73,10 @@ class Hackathon < ActiveRecord::Base
     [street, suburb, state, postcode, country].compact.join(', ')
   end
 
+  def self.approved
+    future_hackathons.where(status: 'APPROVED')
+  end
+
 end
 
 

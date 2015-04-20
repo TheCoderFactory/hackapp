@@ -7,7 +7,16 @@
   <div class="well">
     <div class="row">
       <div class="col-md-8 col-sm-8">
-    <h2><%= @hackathon.name %></h2>
+    <h2>
+      <%= @hackathon.name %> 
+      <% if user_signed_in? %>
+        <%= hackathon_status(@hackathon) %>
+      <% end %>
+      <% if @hackathon.user == current_user or current_user.has_role? :admin %>
+        <%= link_to '<i class="fa fa-pencil"></i> EDIT'.html_safe, edit_hackathon_path(@hackathon), class: 'btn btn-warning btn-xs' %>
+        
+      <% end %>
+    </h2>
     <hr>
     <h3><i class="fa fa-info-circle"></i> Details</h3>
     <p><%= @hackathon.description %></p>

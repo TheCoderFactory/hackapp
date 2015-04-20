@@ -4,14 +4,14 @@ class PagesController < ApplicationController
   def home
   	@hackathon_countries = Hackathon.order(country: :asc).pluck("DISTINCT country")
   	if params[:country]
-  		@hackathons = Hackathon.where(country: params[:country])
+  		@hackathons = Hackathon.approved.where(country: params[:country])
   	elsif params[:country_name]
       @country_code = IsoCountryCodes.search_by_name(params[:country_name]).first.alpha2
-      @hackathons = Hackathon.where(country: @country_code)
+      @hackathons = Hackathon.approved.where(country: @country_code)
     elsif params[:tag]
-      @hackathons = Hackathon.tagged_with(params[:tag])
+      @hackathons = Hackathon.approved.tagged_with(params[:tag])
     else
-  		@hackathons = Hackathon.future_hackathons
+  		@hackathons = Hackathon.approved
   	end
     @tags = Hackathon.tag_counts_on(:tags)
   end

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'my_hackathons', to: 'hackathons#my_hackathons'
   get 'import', to: 'hackathons#import'
   post 'import_hackathons', to: 'hackathons#import_hackathons'
-  get 'search_hackathon', to: 'hackathons#search'
-  get 'admin', to: 'pages#admin'
+  get 'approve_hackathon', to: 'hackathons#approve'
+
   get 'contact', to: 'pages#contact'
   root 'pages#home'
 

@@ -2,6 +2,12 @@ class HackathonsController < ApplicationController
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :index]
 
+  def approve
+    if params[:hackathon]
+      Hackathon.find(params[:hackathon]).update_attributes(status: 'APPROVED')
+    end
+    redirect_to :back
+  end
 
   def my_hackathons
     @my_hackathons = Hackathon.where(user_id: current_user.id).future_hackathons

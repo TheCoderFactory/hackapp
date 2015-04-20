@@ -15,13 +15,13 @@
 	    </tr>
 
 	  <%= content_tag_for(:tr, Hackathon.all) do |hackathon| %>
-	    <td><%= hackathon.name %></td>
+	    <td><%= link_to hackathon.name, hackathon %></td>
 	    <td><%= hackathon.organisation %></td>
-	    <td><%= hackathon.country %></td>
-	    <td><%= hackathon.start_date %></td>
-	      <td><%= link_to 'Show', hackathon %></td>
-	    <td><%= link_to 'Edit', edit_hackathon_path(hackathon), class: 'btn btn-edit' %></td>
-	    <td><%= link_to 'Delete', hackathon, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+	    <td><%= ISO3166::Country[hackathon.country] %></td>
+	    <td><%= hackathon.start_date.strftime('%d %B %Y') %></td>
+	    <td><% if hackathon.status.nil? %><%= link_to "Approve", approve_hackathon_path(hackathon: hackathon.id), class: 'btn btn-xs btn-success' %><% else %>APPROVED<% end %></td>
+	    <td><%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_hackathon_path(hackathon), class: 'btn btn-xs btn-warning' %></td>
+	    <td><%= link_to '<i class="fa fa-trash"></i>'.html_safe, hackathon, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-danger' %></td>
 	  <% end %>
 	</table>
 
