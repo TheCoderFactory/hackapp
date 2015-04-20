@@ -8,7 +8,7 @@ class Hackathon < ActiveRecord::Base
   geocoded_by :address
 
   acts_as_taggable
- 	# mount_uploader :logo, LogoUploader
+ 	mount_uploader :logo, LogoUploader
 
  	extend FriendlyId
  	friendly_id :slug_candidates, use: :slugged

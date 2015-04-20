@@ -15,7 +15,7 @@
     
       
         <%= f.input :description, input_html: { rows: 3 } %>
-        <%= f.input :total_prize_value, label: 'Total prize value', hint: "Value in USD to the nearest dollar. eg 10000" %>
+        <%= f.input :total_prize_value, label: 'Total prize value', hint: "Value in local currency to the nearest major unit. eg 10000" %>
 
         <%= f.input :logo, as: :file %>
         <%= f.input :registration_link, placeholder: "eg. https://hackathon.eventrbite.com" %>

@@ -13,7 +13,7 @@
     <p><%= @hackathon.description %></p>
     
     <p><strong>Organised by: </strong><%= @hackathon.organisation %></p>
-    <p><strong>Website:</strong> <%= link_to @hackathon.website, @hackathon.website, title: @hackathon.name, target: '_blank' %></p>
+    <p><strong>Website:</strong> <%= link_to website_link_text(@hackathon.website), @hackathon.website, title: @hackathon.name, target: '_blank' %></p>
     <p>
       <strong>Total prize value:</strong>
       <%= @hackathon.total_prize_value %>
