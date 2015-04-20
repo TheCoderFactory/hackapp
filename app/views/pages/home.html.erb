@@ -29,6 +29,31 @@
 </div>
 <div class="col-md-7">
 	<div class="well">
-		<div id="multi_markers" style='width: 100%; height: 500px;'></div>
+		<div id="multi_markers" style='width: 100%; height: 400px;'></div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="well">
+				<h4>Filter by country</h4>
+				<% @hackathon_countries.each do |hackathon_country| %>
+					<a href="/<%= ISO3166::Country[hackathon_country] %>" class=""><%= ISO3166::Country[hackathon_country] %></a> <span class="label"><%= Hackathon.where(country: hackathon_country).count %></span>&nbsp;
+					
+				<% end %>
+				<br>
+				<%= link_to 'ALL HACKATHONS', root_path, class: 'btn btn-primary btn-xs' %>
+			</div>
+		</div>
+		<div class="col-md-6">
+
+			<div class="well">
+				<h4>Filter by tags</h4>
+				<% @tags.most_used.each do |tag| %>
+					<%= link_to tag.name.capitalize, root_path(tag: tag.name) %> <span class="label"><%= tag.taggings_count %></span>&nbsp;
+					
+				<% end %>
+				<br>
+				<%= link_to 'ALL HACKATHONS', root_path, class: 'btn btn-primary btn-xs' %>
+			</div>
+		</div>
 	</div>
 </div>
