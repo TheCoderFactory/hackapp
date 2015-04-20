@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'privacy', to: 'privacy#index'
+
   get 'admin', to: 'admin#index'
 
   resources :enquiries
