@@ -1,4 +1,10 @@
-<%= content_for :title, "Do you love hackathons? We Love Hackathons" %>
+<% if params[:country_name] %>
+	<%= content_for :title, "Upcoming hackathons in " + params[:country_name].capitalize + " @ We Love Hackathons" %>
+<% elsif params[:tag] %>
+	<%= content_for :title, "Upcoming hackathons tagged with " + params[:tag].capitalize + " @ We Love Hackathons" %>
+<% else %>
+	<%= content_for :title, "Do you love hackathons? We Love Hackathons" %>
+<% end %>
 <%= content_for :description, "The best place on the web to find out all about upcoming hackathons in your area. List your hackathons. Be notified by email when new hackathons are listed." %>
 
 <div class="col-md-3">
