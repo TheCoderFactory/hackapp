@@ -65,6 +65,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'will_paginate'
+gem 'gibbon'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'

@@ -44,8 +44,7 @@
 					<a href="/<%= ISO3166::Country[hackathon_country] %>" class=""><%= ISO3166::Country[hackathon_country] %></a> <span class="label"><%= Hackathon.where(country: hackathon_country).count %></span>&nbsp;
 					
 				<% end %>
-				<br>
-				<%= link_to 'ALL HACKATHONS', root_path, class: 'btn btn-primary btn-xs' %>
+				
 			</div>
 		</div>
 		<div class="col-md-6">
@@ -56,8 +55,7 @@
 					<%= link_to tag.name.capitalize, root_path(tag: tag.name) %> <span class="label"><%= tag.taggings_count %></span>&nbsp;
 					
 				<% end %>
-				<br>
-				<%= link_to 'ALL HACKATHONS', root_path, class: 'btn btn-primary btn-xs' %>
+				
 			</div>
 		</div>
 	</div>
