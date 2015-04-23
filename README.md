@@ -5,10 +5,10 @@ The live site can be found here: [http://welovehackathons.com/](http://welovehac
 
 Environment variables that need to be set for this app to work:
 
-CLOUDINARY_API_KEY
-CLOUDINARY_SECRET
-MAILCHIMP_API_KEY
-MANDRILL_PASSWORD
-MANDRILL_USERNAME
+1. CLOUDINARY_API_KEY
+1. CLOUDINARY_SECRET
+1. MAILCHIMP_API_KEY
+1. MANDRILL_PASSWORD
+1. MANDRILL_USERNAME
 
 To use app fork, clone, bundle, rake db:migrate and set environment variables :)
